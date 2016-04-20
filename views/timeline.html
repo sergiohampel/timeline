@@ -1,0 +1,60 @@
+<!-- filter form - start -->
+<form class="form-content">
+	<button type="button" class="open-filters btn" toggle-filter ng-click="toggle = !toggle">{{ toggleTextFilter }} filters</button>
+	<div class="form-field order">
+		<label for="">Order by date:</label>
+		<div class="btn-group">
+			<button type="button" title="Date up" class="btn btn-up" ng-click="vm.orderBy('date', true)"></button>
+			<button type="button" title="Date down" class="btn btn-down" ng-click="vm.orderBy('date')"></button>
+		</div>
+	</div>
+	<div class="form-field order">
+		<label for="">Order by likes:</label>
+		<div class="btn-group">
+			<button type="button" title="Likes up" class="btn btn-up" ng-click="vm.orderBy('likes', true)"></button>
+			<button type="button" title="Likes down" class="btn btn-down" ng-click="vm.orderBy('likes')"></button>
+		</div>
+	</div>
+	<div class="form-field">
+		<label for="username">Filter by username:</label>
+		<input type="text" name="username" placeholder="Type the username" id="username" ng-model="searchUsername">
+	</div>
+	<div class="form-field">
+		<label for="location">Filter by location:</label>
+		<input type="text" placeholder="Type the location" id="location" ng-model="searchLocation">
+	</div>
+</form>
+<!-- filter form - end -->
+
+<!-- posts found - start -->
+<p class="found"><span ng-bind="(vm.posts | searchUsername: searchUsername | searchLocation: searchLocation).length"></span> post{{((vm.posts | searchUsername: searchUsername | searchLocation: searchLocation).length <= 1) ? '' : 's'}} found</p>
+<!-- posts found - end -->
+
+<!-- timeline list - start -->
+<ul class="timeline-list" ng-hide="!vm.posts">
+	<li data-ng-repeat="post in vm.posts | searchUsername: searchUsername | searchLocation: searchLocation | orderBy: vm.order: vm.direction">
+		<header>
+			<h1 class="username"><a href="#">{{ post.user.username }}</a></h1>
+			<time datetime="{{ post.date }}" class="date">
+				<i class="time"></i>
+				{{ post.date | date:'dd/MM/yyyy' }}
+			</time>
+		</header>
+
+		<img class="profile-photo" ng-src="{{ post.user.picture }}">
+
+		<p class="text-content">{{ post.content }}</p>
+
+		<footer class="timeline-list-footer">
+			<span class="likes">
+				<i class="thumbs-up"></i>
+				{{ post.likes }}
+			</span>
+			<span class="location">
+				<i class="map-marker"></i>
+				{{ post.user.location }}
+			</span>
+		</footer>
+	</li>
+</ul>
+<!-- timeline list - end -->

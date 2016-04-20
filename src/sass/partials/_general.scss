@@ -18,13 +18,13 @@ body {
 	padding: 0;
 
 	#loading-bar .bar {
-	  background: $color-3;
+	  background: darken($color-3, 15);
 	  height: 5px;
 	}
 
 	#loading-bar-spinner .spinner-icon {
-	  border-top-color:  $color-3;
-	  border-left-color: $color-3;
+	  border-top-color:  darken($color-3, 15);
+	  border-left-color: darken($color-3, 15);
 	}
 }
 

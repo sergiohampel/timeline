@@ -1,0 +1,125 @@
+.found {
+	@include make-row();
+	background-color: lighten($color-3, 6);
+	color: lighten($color-default, 100);
+	font-size: $base-font-size + 1;
+	padding: 15px 30px;
+}
+
+.timeline-list {
+	border-left: 2px solid lighten($color-default, 100);
+	display: inline-block;
+	margin: 50px 5%;
+	padding: 20px 0 20px 55px;
+	position: relative;
+	width: 90%;
+
+	@media (max-width: $screen-xs-max) {
+		margin: 50px 0 50px 5%;
+		padding-left: 35px;
+		width: 95%;
+	}
+
+	&:before,
+	&:after {
+		@include borderRadius(4px);
+	    content: "";
+	    width: 16px;
+	    height: 16px;
+	    border: 2px solid lighten($color-default, 100);
+	    position: absolute;
+	    left: -11px;
+	}
+
+	&:before {
+	    top: -18px;
+	}
+
+	&:after {
+	    bottom: -18px;
+	}
+
+	li {
+		@include borderRadius(4px);
+		@include transition(all .3s ease-in-out);
+		background-color: lighten($color-default, 100);
+		display: inline-block;
+		margin-top: 20px;
+		padding: 10px 15px;
+		position: relative;
+		width: 100%;
+
+		&:hover {
+			@include transform(scale(1.01));
+			@include boxShadow(1px 1px 10px rgba($color-default, .4));
+		}
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:before {
+			background-color: lighten($color-default, 100);
+			content: "";
+			height: 2px;
+			left: -55px;
+			position: absolute;
+			top: 50%;
+			width: 55px;
+		}
+	}
+
+	img {
+		@include borderRadius(4px);
+		height: 50px;
+		left: -80px;
+		margin-top: -25px;
+		position: absolute;
+		top: 50%;
+		width: 50px;
+
+		@media (max-width: $screen-xs-max) {
+			left: -60px;
+		}
+	}
+}
+
+.username {
+	display: inline-block;
+	font-size: $base-font-size + 1;
+	font-weight: 600;
+	margin-right: 5px;
+
+	a {
+		color: $color-default;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.date {
+	color: rgba($color-default, .5);
+	font-size: $base-font-size + .2;
+}
+
+.text-content {
+	font-size: $base-font-size + .6;
+	line-height: 1.2em;
+	margin-top: 10px;
+}
+
+.likes, .location {
+	color: rgba($color-default, .5);
+	font-size: $base-font-size + .2;
+}
+
+.likes {
+	margin-right: 5px;
+}
+
+.timeline-list-footer {
+	margin-top: 10px;
+}

@@ -1,0 +1,17 @@
+.thumbs-up,
+.map-marker,
+.time {
+	@extend .glyphicon;
+}
+
+.thumbs-up {
+	@extend .glyphicon-thumbs-up;
+}
+
+.map-marker {
+	@extend .glyphicon-map-marker;
+}
+
+.time {
+	@extend .glyphicon-calendar;
+}

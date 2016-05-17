@@ -3,32 +3,17 @@
 
 	angular.module('app').factory('requestData', requestData);
 
-	requestData.$inject = ['$http', '$q'];
+	requestData.$inject = ['$http', '$q', 'config'];
 
-	function requestData($http, $q){
+	function requestData($http, $q, config){
 		var service = {
 			getData: _getData
 		};
 
 		return service;
 
-		function _getData(url, method, params, type) {
-			var deferred = $q.defer();
-
-			$http({
-					url: url,
-					method: method,
-					params: params,
-					responseType: type
-				})
-				.success(function(response) {
-					deferred.resolve(response);
-				})
-				.error(function(response, status) {
-					deferred.reject(response);
-				});
-
-			return deferred.promise;
+		function _getData() {
+			return $http.get(config.baseUrl);
 		};
 	};
 })();

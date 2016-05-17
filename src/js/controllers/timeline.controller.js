@@ -3,11 +3,17 @@
 
 	angular.module('app').controller('TimelineCtrl', TimelineCtrl);
 
-	TimelineCtrl.$inject = ['$location', '$scope', 'getTimeline'];
+	TimelineCtrl.$inject = ['$scope', 'requestData'];
 
-	function TimelineCtrl($location, $scope, getTimeline){
+	function TimelineCtrl($scope, requestData){
 		var vm = this;
-		vm.posts = getTimeline;
+		vm.posts = '';
+
+		vm.init = function(){
+			requestData.getData().success(function(data){
+				vm.posts = data;
+			});
+		};
 
 		angular.forEach(vm.posts, function(value, key){
 			var date = value.date.replace(' ', '');

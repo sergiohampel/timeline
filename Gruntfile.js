@@ -12,6 +12,7 @@ module.exports = function( grunt ) {
 	sourceJS = [
 		'src/js/app.js',
 		'src/js/config/route.js',
+		'src/js/config/constant.js',
 		'src/js/services/request-data.service.js',
 		'src/js/controllers/timeline.controller.js',
 		'src/js/filters/search-user.filter.js',
